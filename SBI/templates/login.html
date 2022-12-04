@@ -1,0 +1,57 @@
+{% include 'header.html' %}
+
+<div class="card shadow m-5">
+    <div class="card-body">
+        <h5 class="p-2 text-primary" style="border-bottom : 2px solid blue">User Login</h5>
+
+        <div class="container-fluid">
+            <form action='login_user' method="post" >
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Email ID</label>
+                            <input type="email" name="emailid" class="form-control" placeholder="Enter First email"required>
+                        </div>
+
+                    </div>
+</div>
+                <div class="form-row">
+                     <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" name="password" class="form-control" placeholder="Enter Your Password"required>
+                        </div>
+
+                    </div>
+</div>
+
+
+
+
+                 {{form.captcha}}
+                 <p><a href="{% url "password_reset" %}" >Forgotten your password?</a></p>
+                 <input type="submit" value="Login" class="m-2 px-3 btn btn-primary">
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{% if error == "no" %}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+   swal("Login Succressfull");
+</script>
+<script>
+
+    window.location = ('{% url 'base' %}');
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    swal("Oops!", "Invalid Login Details", "error");
+
+</script>
+{%endif%}

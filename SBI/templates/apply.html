@@ -1,0 +1,104 @@
+{% include 'header1.html' %}
+<div class="card shadow m-5">
+    <div class="card-body">
+        <h5 class="p-3 text-primary" style="border-bottom : 3px solid blue"><b>Apply For Loan</b></h5>
+
+        <div class="container-fluid">
+            <form method="post" name="signup">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" name="firstname" class="form-control" placeholder="Enter First Name" pattern="[A-Za-z]+"value="{{employee.user.first_name}}">
+                        </div>
+
+                    </div>
+
+                     <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" name="lastname" class="form-control" placeholder="Enter Last Name" pattern="[A-Za-z]+"value="{{employee.user.last_name}}">
+                        </div>
+
+                    </div>
+
+                     <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Mobile Number</label>
+                            <input type="number" name="empcode" class="form-control" placeholder="Enter Your Mobile number" pattern="[0-9]+"value="{{employee.Mobile_Number}}">
+                        </div>
+
+                    </div>
+
+
+
+
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" class="form-control" placeholder="Email"value="{{employee.Email}}">
+                        </div>
+
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label>Choose Loan type</label>
+                          <select name="ltype" class="form-control">
+                             <option value="Personal">Personal</option>
+                             <option value="Gold">Gold</option>
+                              <option value="Home">Home</option>
+                              <option value="Crop">Crop</option>
+                              <option value="Vehicle">Vehicle</option>
+                              <option value="Education">Education</option>
+
+
+                          </select>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label>Choose Document type</label>
+                          <select name="proof" class="form-control">
+                             <option value="Aadhar">Aadhar</option>
+                             <option value="Pan">Pan</option>
+
+
+                          </select>
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+                 <input type="submit" value="Submit" class="m-2 px-3 btn btn-primary">
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{% if error == "no" %}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+   swal("Login Succressfull");
+</script>
+<script>
+    window.location = ('{% url 'apply_loan' %}');
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    swal("Oops!", "Something went wrong, you should choose again!", "error");
+
+</script>
+{% endif%}

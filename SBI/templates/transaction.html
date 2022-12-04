@@ -1,0 +1,58 @@
+{% extends 'withdraw.html' %}
+
+{%block main%}
+
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+{{mydata}}
+
+<body>
+
+<h2>Transactions</h2>
+
+<table>
+  <tr>
+    <th>Account</th>
+    <th>Transaction</th>
+    <th>Ammount</th>
+
+  </tr>
+  {% for x in mydata %}
+  <tr>
+    <td>{{x.user_id}}</td>
+    <td>{{x.id}}</td>
+    <td>{{x.balance}}</td>
+
+  </tr>
+{% endfor %}
+  <tr>
+    <td>Account Balance  {{ac.Account_balance}}  </td>
+  </tr>
+
+
+</table>
+
+<a href="{% url 'withdraw' %}">Back to Menu</a>
+
+</body>
+</html>
+{%endblock%}
+

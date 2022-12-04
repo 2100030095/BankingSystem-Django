@@ -1,0 +1,147 @@
+
+{% load static %}
+<html>
+<head>
+<title>BFS Loans</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
+.w3-bar-block .w3-bar-item {padding:20px}
+</style>
+  <style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+</style>
+</head>
+<body>
+
+<!-- Sidebar (hidden by default) -->
+<nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()"
+  class="w3-bar-item w3-button">Close Menu</a>
+  <a href="{% url 'base' %}" onclick="w3_close()" class="w3-bar-item w3-button">Dashboard</a>
+  <a href="{% url 'apply' %}" onclick="w3_close()" class="w3-bar-item w3-button">Apply For a Loan</a>
+  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button"></a>
+</nav>
+
+<!-- Top menu -->
+<div class="w3-top">
+  <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
+    <div class="w3-button w3-padding-16 w3-left" onclick="w3_open()">☰</div>
+    <div class="w3-right w3-padding-16"></div>
+    <div class="w3-center w3-padding-16">Loans</div>
+  </div>
+</div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
+
+  <!-- First Photo Grid-->
+  <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+    <div class="w3-quarter">
+      <img src="{% static 'images/personal-1.jpg' %}" alt="Personal Loan" style="width:100%">
+      <h3>Personal Loan</h3>
+      <p>A Personal loan is one of the most popular types of unsecured loans that offer instant liquidity</p>
+      <p ><img src="{% static 'images/term.png' %}" alt="personal" style="width:10%">Terms and Conditions</p>
+      <p>* Utility bill(for the current or previous month). </p>
+      <p>* Property Or municipal tax receipt.</p>
+      <p>* Aadhar card or Pan card</p>
+    </div>
+    <div class="w3-quarter">
+      <img src="{% static 'images/gold-1.jpg' %}" alt="Gold Loan" style="width:100%">
+      <h3>Gold Loan</h3>
+      <p>A gold loan requires you to pledge gold jewellery or coins as collateral.</p>
+      <p ><img src="{% static 'images/term.png' %}" alt="personal" style="width:10%">Terms and Conditions</p>
+      <p>* Utility bill(for the current or previous month). </p>
+      <p>* Property Or municipal tax receipt.</p>
+      <p>* Aadhar card or Pan card</p>
+    </div>
+    <div class="w3-quarter">
+      <img src="{% static 'images/education-1.jpg' %}" alt="Education Loan" style="width:100%">
+      <h3>Education Loan</h3>
+      <p>An education loan can be taken for a full-time,part-time or vocational course</p>
+      <p ><img src="{% static 'images/term.png' %}" alt="personal" style="width:10%">Terms and Conditions</p>
+      <p>* The candidate applying for the loan must be a resident of india. </p>
+      <p>* The age of the candidate must fall within the bracket of 18 to 35 years during loan application.</p>
+      <p>* The co-applicant must have a regular income source.</p>
+
+    </div>
+    <div class="w3-quarter">
+      <img src="{% static 'images/home-1.jpg' %}" alt="Home Loan" style="width:100%">
+      <h3>Home Loan</h3>
+      <p>Home loand are a secured mode of finance that give you the funds to buy or build the home of your choice.</p>
+      <p ><img src="{% static 'images/term.png' %}" alt="personal" style="width:10%">Terms and Conditions</p>
+      <p>* Margin – Margin in this case is the same as down payment. This is essentially the difference between the loan amount the bank provides and the total value of the property. Back in 2010, the Reserve Bank of India had set a ceiling limit on housing mortgages. A bank cannot provide a loan of more than 80% of the property’s total value.</p>
+      <p>* Offer Letter – This is a formal confirmation letter, also known as sanction letter, that the bank sends out acknowledging that the bank has considered you as an eligible loan customer. This is valid for 6 months and in the event that you do not receive a loan in these 6 months, the whole procedure must be gone over from start.</p>
+      <p>*Full Disbursement – A full disbursement is when a bank disburses the entire loan amount all at once.</p>
+    </div>
+  </div>
+
+  <!-- Second Photo Grid-->
+  <div class="w3-row-padding w3-padding-16 w3-center">
+    <div class="w3-quarter">
+      <img src="{% static 'images/vehicle-1.jpg' %}" alt="Vehicle Loan" style="width:100%">
+      <h3>Vehicle Loan</h3>
+      <p>A Vehicle loan is extended in the form of two or four-wheeler loan that helps you to buy your dream vehicle.</p>
+      <p ><img src="{% static 'images/term.png' %}" alt="personal" style="width:10%">Terms and Conditions</p>
+      <p>* BFS makes no representations about the timeliness, of the services contained on the BFL web site for any purpose</p>
+      <p>* BFS makes no representations about the suitability, reliability, availability, of the services contained on the BFL web site for any purpose</p>
+      <p>* In case of transaction/ statement /certificate is not in agreement with your record or with the information that you have, you are requested to write to BFS</p>
+    </div>
+
+
+
+
+
+<!-- End page content -->
+</div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+
+</body>
+</html>

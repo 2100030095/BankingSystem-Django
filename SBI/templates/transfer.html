@@ -1,0 +1,62 @@
+{% extends 'home.html' %}
+
+{%block main%}
+<div class="card shadow m-10">
+    <div class="card-body">
+
+        <h5 class="p-4 text-danger" style="border-bottom : 5px solid blue"><b>Transfer To Another User</b></h5>
+
+        <div class="container-fluid">
+
+            <form method="post" >
+                {% csrf_token %}
+
+                <div class="form-row">
+                    <div class="col-sm-7">
+                        <div class="form-group">
+                            <label>Transfer To</label>
+                            <input type="email" name="em" class="form-control" placeholder="Enter Reciver email"required>
+                        </div>
+
+                    </div>
+                </div>
+               <div class="form-row">
+                    <div class="col-sm-7">
+                        <div class="form-group">
+                            <label>Amount</label>
+                            <input type="number" name="transfer" class="form-control" placeholder="Enter Amount"required>
+                        </div>
+
+                    </div>
+                </div>
+                <br><br><br>
+                 <input type="submit" value="Transfer" class="m-1 px-5 btn btn-primary">
+            </form>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+{% if error == "no" %}
+<script>
+
+    alert('Logged In SuccesFully');
+
+</script>
+{% endif %}
+{% if error == "yes" %}
+
+<script>
+    window.location = ('{% url 'transaction' %}');
+
+</script>
+
+
+
+
+</script>
+{%endif%}
+{%endblock%}

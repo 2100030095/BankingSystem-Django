@@ -1,0 +1,53 @@
+{% extends 'home.html' %}
+
+{%block main%}
+<div class="card shadow m-10">
+    <div class="card-body">
+
+        <h5 class="p-4 text-danger" style="border-bottom : 5px solid blue"><b>Withdraw</b></h5>
+
+        <div class="container-fluid">
+
+            <form method="post" >
+                {% csrf_token %}
+
+                <div class="form-row">
+                    <div class="col-sm-7">
+                        <div class="form-group">
+                            <label>Amount</label>
+                            <input type="number" name="with" class="form-control" placeholder="Enter Amount"required>
+                        </div>
+
+                    </div>
+                </div>
+                <br>
+                 <input type="submit" value="Withdraw" class="m-1 px-5 btn btn-primary">
+            </form>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+{% if error == "no" %}
+<script>
+
+    alert('Logged In SuccesFully');
+
+</script>
+{% endif %}
+{% if error == "yes" %}
+
+<script>
+    window.location = ('{% url 'transaction' %}');
+
+</script>
+
+
+
+
+</script>
+{%endif%}
+{%endblock%}

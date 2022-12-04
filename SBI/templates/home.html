@@ -1,0 +1,119 @@
+{% load static %}
+
+<html lang="en">
+<head>
+  <title>Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 600px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 150%;
+    }
+        
+    /* On small screens, set height to 'auto' for the grid */
+    @media screen and (max-width: 767px) {
+      .row.content {height: auto;} 
+    }
+  </style>
+</head>
+<body style="background-image : url({%static 'images/banking-1.png' %})">
+
+<nav class="navbar navbar-inverse visible-xs">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Dashboard</a></li>
+        <li><a href="#">Age</a></li>
+        <li><a href="#">Gender</a></li>
+        <li><a href="#">Geo</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav hidden-xs" style="background-color:powderblue;">
+        <img src="{% static 'images/userlogo-1.jpg' %}" width = "100" height="100" class="img-thumbnail rounded-circle my-2">
+
+      <h2><b>BFS</b></h2>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="{% url 'base' %}">Dashboard</a></li>
+        <li><a href="{% url 'profile' %}">Profile</a></li>
+        <li><a href="{% url 'withdraw' %}">Withdraw</a></li>
+        <li><a href="{% url 'deposite' %}">Deposite</a></li>
+        <li><a href="{% url 'transaction' %}">Transactions</a></li>
+        <li><a href="{% url 'transfer' %}">Transfer</a></li>
+        <li><a href="{% url 'cards' %}">Cards</a></li>
+        <li><a href="{% url 'loans' %}">Loans</a></li>
+        <li><a href="{% url 'change_pass' %}">Change Password</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+      </ul><br>
+
+    </div>
+    <br>
+    
+    <div class="col-sm-9">
+      <div class="well" style="background-color:powderblue;">
+        <h4 class="p-2 text-danger" style="border-bottom : 2px solid blue">Dashboard</h4>
+        <p>Hi {{request.user.first_name}} {{request.user.last_name}}</p>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="well" style="background-color:powderblue;">
+            <h4 class="p-2 text-danger" style="border-bottom : 2px solid blue">User</h4>
+            <p>{{request.user.last_name}}</p>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="well" style="background-color:powderblue;">
+            <h4  class="p-2 text-danger" style="border-bottom : 2px solid blue">Account</h4>
+
+            <p>{{employee.Account}}</p>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="well" style="background-color:powderblue;">
+            <h4 class="p-2 text-danger"  style="border-bottom : 2px solid blue">Sessions</h4>
+            <p>{{id.id}}</p>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="well" style="background-color:powderblue;">
+            <h4 class="p-2 text-danger" style="border-bottom : 2px solid blue">Balance</h4>
+            <p>{{ac.Account_balance}}</p>
+            <p>{{acc.Account_balance}}</p>
+          </div>
+        </div>
+      </div>
+
+                    {%block main%}
+
+                      {%endblock%}
+
+
+
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

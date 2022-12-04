@@ -1,0 +1,47 @@
+{% extends 'home.html' %}
+
+{%block main%}
+<div class="card shadow m-10">
+    <div class="card-body">
+
+        <h5 class="p-4 text-primary" style="border-bottom : 5px solid blue"><b>Deposite</b></h5>
+
+        <div class="container-fluid">
+
+            <form method="post" >
+                {% csrf_token %}
+
+                <div class="form-row">
+                    <div class="col-sm-7">
+                        <div class="form-group">
+                            <label>Amount</label>
+                            <input type="number" name="dep" class="form-control" placeholder="Enter Amount"required>
+                        </div>
+
+                    </div>
+                </div>
+                <br>
+                 <input type="submit" value="Deposite" class="m-1 px-5 btn btn-primary">
+            </form>
+
+
+        </div>
+
+    </div>
+</div>
+{%endblock%}
+
+
+{% if error == "no" %}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+   swal("Deposite Succressfull");
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    swal("Oops!", "Deposite Fail", "error");
+
+</script>
+{%endif%}
